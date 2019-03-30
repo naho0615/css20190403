@@ -1,0 +1,48 @@
+input[type=checkbox] {
+    display: none; /* チェックボックスを非表示にする */
+}
+
+label {
+    /* チェックボックスを縦に並べる為にdisplayをblockにする */
+    display: block; /* block要素は要素が横いっぱいに広がるので自然と縦並びになる */
+    position: relative;
+    /* チェックボックスの表示位置より右にlabel表示したい為、padding-leftを調整しておく */
+    padding: 0 0 0 40px;
+}
+
+label:after {
+    position: absolute;
+    content: "";
+    display: block;
+
+    height: 15px;
+    width: 15px;
+
+    border: 2px solid red;
+    border-radius: 6px;
+
+    top: 0;
+    left: 15px; 
+}
+
+label:before {
+    opacity: 0; /* ←この行を追加する */
+    transform: rotate(45deg);
+
+    position: absolute;
+    content: "";
+    display: block;
+
+    height: 9px; /* チェックの長い方 */
+    width: 5px;  /* チェックの短い方 */
+
+    border-right: 3px solid red;
+    border-bottom: 3px solid red;
+
+    top: 2px;
+    left: 20px;
+}
+
+input[type=checkbox]:checked + label:before {
+    opacity: 1;
+}
